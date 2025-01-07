@@ -34,8 +34,10 @@ const Body = () => {
   return (
     <div>
       <NavBar />
-      <Outlet />
-      <Footer />
+      <div className="mt-20">
+        <Outlet />
+        <Footer />
+      </div>
     </div>
   );
 };
