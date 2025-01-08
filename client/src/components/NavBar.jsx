@@ -32,7 +32,7 @@ const NavBar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-4">
         {/* Left: Logo */}
         <Link
-          to="/"
+          to="/home"
           className="flex items-center text-white font-bold text-2xl"
         >
           <FiHeart className="h-8 w-8 mr-2" />

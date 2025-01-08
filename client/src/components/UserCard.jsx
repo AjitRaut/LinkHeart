@@ -9,33 +9,50 @@ const UserCard = ({ user }) => {
 
   const handleSendRequest = async (status, userId) => {
     try {
-      const res = await axios.post(
+      await axios.post(
         BASE_URL + "/request/send/" + status + "/" + userId,
         {},
         { withCredentials: true }
       );
       dispatch(removeUserFromFeed(userId));
-    } catch (err) {}
+    } catch (err) {
+      console.error("Error sending request:", err);
+    }
   };
 
   return (
-    <div className="card bg-base-300 w-96 shadow-xl">
-      <figure>
-        <img src={photoUrl} alt="photo" />
+    <div className="bg-gradient-to-b from-gray-800 to-gray-900 text-white rounded-lg shadow-lg w-80 overflow-hidden hover:scale-105 transform transition duration-300">
+      <figure className="relative">
+        <img
+          src={photoUrl || "https://via.placeholder.com/150"}
+          alt="User"
+          className="w-full h-48 object-cover"
+        />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title">{firstName + " " + lastName}</h2>
-        {age && gender && <p>{age + ", " + gender}</p>}
-        <p>{about}</p>
-        <div className="card-actions justify-center my-4">
+
+      <div className="p-6">
+        <h2 className="text-2xl font-bold capitalize text-center">
+          {firstName} {lastName}
+        </h2>
+
+        {age && gender && (
+          <p className="text-gray-400 text-center mt-2">
+            {age} years old, {gender}
+          </p>
+        )}
+        <p className="text-gray-300 mt-4 text-center">
+          {about || "No bio provided."}
+        </p>
+
+        <div className="flex justify-center gap-4 mt-6">
           <button
-            className="btn btn-primary"
+            className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md shadow-md transition"
             onClick={() => handleSendRequest("ignored", _id)}
           >
             Ignore
           </button>
           <button
-            className="btn btn-secondary"
+            className="px-4 py-2 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-md shadow-md transition"
             onClick={() => handleSendRequest("interested", _id)}
           >
             Interested
@@ -45,4 +62,5 @@ const UserCard = ({ user }) => {
     </div>
   );
 };
+
 export default UserCard;
