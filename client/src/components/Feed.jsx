@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../utils/feedSlice";
 import { useEffect } from "react";
 import UserCard from "./UserCard";
+import EmptyState from "./Home";
 
 const Feed = () => {
   const feed = useSelector((store) => store.feed);
@@ -17,24 +18,23 @@ const Feed = () => {
       });
       dispatch(addFeed(res?.data?.data));
     } catch (err) {
-      //TODO: handle error
+      console.error("Error fetching feed:", err);
     }
   };
 
   useEffect(() => {
     getFeed();
   }, []);
-  if (!feed) return;
 
-  if (feed.length <= 0)
-    return <h1 className="flex justify-center my-10">No new users founds!</h1>;
+  if (!feed) return null;
+
+  if (feed.length === 0) return <EmptyState />;
 
   return (
-    feed && (
-      <div className="flex justify-center my-10">
-        <UserCard user={feed[0]} />
-      </div>
-    )
+    <div className="flex justify-center my-10">
+      <UserCard user={feed[0]} />
+    </div>
   );
 };
+
 export default Feed;
