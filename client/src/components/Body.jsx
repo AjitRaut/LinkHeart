@@ -34,10 +34,10 @@ const Body = () => {
   return (
     <div>
       <NavBar />
-      <div className="mt-20">
+      <main className="mt-16">
         <Outlet />
-        <Footer />
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 };
