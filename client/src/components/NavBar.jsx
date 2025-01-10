@@ -41,7 +41,7 @@ const NavBar = () => {
 
         <div className="flex-1 flex items-center justify-center px-2">
           <div className="w-full max-w-md relative">
-            <FiSearch className="absolute inset-y-0 left-3 h-5 w-5 text-gray-400" />
+            <FiSearch className="absolute inset-y-0 left-3 mt-[10px] h-5 w-5 text-gray-400" />
             <input
               type="text"
               placeholder="Search..."
