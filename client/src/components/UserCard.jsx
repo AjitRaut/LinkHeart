@@ -21,7 +21,7 @@ const UserCard = ({ user }) => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-800 to-gray-900 text-white rounded-lg shadow-lg w-80 overflow-hidden hover:scale-105 transform transition duration-300">
+    <div className="bg-gradient-to-b mt-24 from-gray-800 to-gray-900 text-white rounded-lg shadow-lg w-80 overflow-hidden hover:scale-105 transform transition duration-300">
       <figure className="relative">
         <img
           src={photoUrl || "https://via.placeholder.com/150"}

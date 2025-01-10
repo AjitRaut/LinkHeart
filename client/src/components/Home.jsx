@@ -24,7 +24,7 @@ const Home = () => {
 
       <button
         onClick={handleClick}
-        className="px-6 py-3 bg-gradient-to-r from-pink-500 to-red-500 rounded-full text-white hover:scale-105 transform transition duration-300"
+        className="bg-gradient-to-r from-pink-500 to-red-500 text-white py-2 px-4 rounded-lg hover:scale-105 hover:shadow-lg transition-all"
       >
         Discover Matches
       </button>
