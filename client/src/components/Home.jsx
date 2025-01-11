@@ -9,13 +9,13 @@ const Home = () => {
 
   return (
     <div
-      className="flex flex-col items-center justify-center h-[80vh] bg-cover bg-center text-black"
-      style={{
-        backgroundImage: "url('/images/match-illustration.png')",
-        backgroundColor: "white", // Fallback color
+      className="flex flex-col items-center justify-center h-[85vh] bg-cover bg-center  text-black"
+      style={{ 
+        backgroundImage:
+          "url('https://tinder.com/static/build/8ad4e4299ef5e377d2ef00ba5c94c44c.webp')",
       }}
     >
-      <div className="bg-white bg-opacity-80 p-8 rounded-lg text-center max-w-md">
+      <div className="bg-white bg-opacity-10 p-8 rounded-lg text-center max-w-md">
         <h1 className="text-2xl font-semibold mb-2">
           Looks like there’s no one new right now!
         </h1>
