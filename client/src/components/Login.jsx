@@ -19,10 +19,7 @@ const Login = () => {
     try {
       const res = await axios.post(
         BASE_URL + "/login",
-        {
-          emailId,
-          password,
-        },
+        { emailId, password },
         { withCredentials: true }
       );
       dispatch(addUser(res.data));
@@ -47,83 +44,101 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center my-10 ">
-      <div className="card bg-base-300 w-96 shadow-xl  mt-14">
-        <div className="card-body">
-          <h2 className="card-title justify-center">
-            {isLoginForm ? "Login" : "Sign Up"}
-          </h2>
-          <div>
-            {!isLoginForm && (
-              <>
-                <label className="form-control w-full max-w-xs my-2">
-                  <div className="label">
-                    <span className="label-text">First Name</span>
-                  </div>
-                  <input
-                    type="text"
-                    value={firstName}
-                    className="input input-bordered w-full max-w-xs"
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black px-4">
+      <div className="w-full max-w-md bg-gray-800 shadow-lg rounded-lg p-6">
+        <h2 className="text-2xl font-bold text-center text-white mb-6">
+          {isLoginForm ? "Login" : "Sign Up"}
+        </h2>
+        <form>
+          {!isLoginForm && (
+            <>
+              <div className="mb-4">
+                <label
+                  htmlFor="firstName"
+                  className="block text-sm text-gray-300 mb-2"
+                >
+                  First Name
                 </label>
-                <label className="form-control w-full max-w-xs my-2">
-                  <div className="label">
-                    <span className="label-text">Last Name</span>
-                  </div>
-                  <input
-                    type="text"
-                    value={lastName}
-                    className="input input-bordered w-full max-w-xs"
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
+                <input
+                  type="text"
+                  id="firstName"
+                  value={firstName}
+                  placeholder="Enter your first name"
+                  className="w-full px-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="lastName"
+                  className="block text-sm text-gray-300 mb-2"
+                >
+                  Last Name
                 </label>
-              </>
-            )}
-            <label className="form-control w-full max-w-xs my-2">
-              <div className="label">
-                <span className="label-text">Email ID:</span>
+                <input
+                  type="text"
+                  id="lastName"
+                  value={lastName}
+                  placeholder="Enter your last name"
+                  className="w-full px-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  onChange={(e) => setLastName(e.target.value)}
+                />
               </div>
-              <input
-                type="text"
-                value={emailId}
-                className="input input-bordered w-full max-w-xs"
-                onChange={(e) => setEmailId(e.target.value)}
-              />
+            </>
+          )}
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm text-gray-300 mb-2">
+              Email ID
             </label>
-            <label className="form-control w-full max-w-xs my-2">
-              <div className="label">
-                <span className="label-text">Password</span>
-              </div>
-              <input
-                type="password"
-                value={password}
-                className="input input-bordered w-full max-w-xs"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </label>
+            <input
+              type="text"
+              id="email"
+              value={emailId}
+              placeholder="Enter your email"
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+              onChange={(e) => setEmailId(e.target.value)}
+            />
           </div>
-          <p className="text-red-500">{error}</p>
-          <div className="card-actions justify-center m-2">
-            <button
-              className="btn btn-primary"
-              onClick={isLoginForm ? handleLogin : handleSignUp}
+          <div className="mb-4">
+            <label
+              htmlFor="password"
+              className="block text-sm text-gray-300 mb-2"
             >
-              {isLoginForm ? "Login" : "Sign Up"}
-            </button>
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              placeholder="Enter your password"
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
-
-          <p
-            className="m-auto cursor-pointer py-2"
-            onClick={() => setIsLoginForm((value) => !value)}
+          {error && (
+            <div className="text-red-500 text-center text-sm mb-4">
+              {error}
+            </div>
+          )}
+          <button
+            type="button"
+            onClick={isLoginForm ? handleLogin : handleSignUp}
+            className="w-full py-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-md transition duration-300"
           >
-            {isLoginForm
-              ? "New User? Signup Here"
-              : "Existing User? Login Here"}
-          </p>
-        </div>
+            {isLoginForm ? "Login" : "Sign Up"}
+          </button>
+        </form>
+        <p
+          className="text-center text-sm text-gray-400 mt-4 cursor-pointer hover:text-purple-400"
+          onClick={() => setIsLoginForm((value) => !value)}
+        >
+          {isLoginForm
+            ? "New User? Sign Up Here"
+            : "Existing User? Login Here"}
+        </p>
       </div>
     </div>
   );
 };
+
 export default Login;
