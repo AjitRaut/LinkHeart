@@ -1,35 +1,46 @@
-import axios from "axios";
-import { BASE_URL } from "../utils/constants";
-import { useDispatch } from "react-redux";
-import { removeUserFromFeed } from "../utils/feedSlice";
+import React from "react";
 
 const UserEditCard = ({ user }) => {
-  const { _id, firstName, lastName, photoUrl, age, gender, about } = user;
-  const dispatch = useDispatch();
-
-  const handleSendRequest = async (status, userId) => {
-    try {
-      const res = await axios.post(
-        BASE_URL + "/request/send/" + status + "/" + userId,
-        {},
-        { withCredentials: true }
-      );
-      dispatch(removeUserFromFeed(userId));
-    } catch (err) {}
-  };
+  const { firstName, lastName, photoUrl, age, gender, about } = user;
 
   return (
-    <div className="card bg-base-300 w-96 shadow-xl">
-      <figure>
-        <img src={photoUrl} alt="photo" />
-      </figure>
-      <div className="card-body">
-        <h2 className="card-title">{firstName + " " + lastName}</h2>
-        {age && gender && <p>{age + ", " + gender}</p>}
-        <p>{about}</p>
-       
+    <div className="bg-gray-800/90 w-80 md:w-96 rounded-lg shadow-lg overflow-hidden text-gray-100 px-4">
+      <div className="relative pt-4">
+        <img
+          src={photoUrl}
+          alt="User Profile"
+          className="w-full h-48 object-cover"
+        />
+      </div>
+
+      <div className="p-1">
+        <h2 className="text-2xl font-semibold mb-4 text-center">
+          Profile Details
+        </h2>
+        <div className="space-y-2">
+          <p>
+            <span className="font-semibold text-gray-200">Name:</span>{" "}
+            {firstName + " " + lastName}
+          </p>
+          {age && (
+            <p>
+              <span className="font-semibold text-gray-200">Age:</span> {age} <span>Years old</span>
+            </p>
+          )}
+          {gender && (
+            <p>
+              <span className="font-semibold text-gray-200">Gender:</span>{" "}
+              {gender}
+            </p>
+          )}
+          <p>
+            <span className="font-semibold text-gray-200">About:</span>{" "}
+            {about || "No additional information provided."}
+          </p>
+        </div>
       </div>
     </div>
   );
 };
+
 export default UserEditCard;
