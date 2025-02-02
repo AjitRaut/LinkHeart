@@ -37,7 +37,7 @@ const Login = () => {
         { withCredentials: true }
       );
       dispatch(addUser(res.data.data));
-      return navigate("/profile");
+      return navigate("/feed");
     } catch (err) {
       setError(err?.response?.data || "Something went wrong");
     }
@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black px-4">
-      <div className="w-full max-w-md bg-gray-800 shadow-lg rounded-lg p-6">
+      <div className="w-full max-w-[420px] bg-gray-800 shadow-lg rounded-lg p-6">
         <h2 className="text-2xl font-bold text-center text-white mb-6">
           {isLoginForm ? "Login" : "Sign Up"}
         </h2>

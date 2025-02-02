@@ -21,38 +21,38 @@ const UserCard = ({ user }) => {
   };
 
   return (
-    <div className="bg-gradient-to-b mt-24 from-gray-800 to-gray-900 text-white rounded-lg shadow-lg w-80 overflow-hidden hover:scale-105 transform transition duration-300">
+    <div className="bg-gradient-to-b mt-24 from-gray-800 to-gray-900 text-white rounded-lg shadow-lg w-96 overflow-hidden hover:scale-105 transform transition duration-300">
       <figure className="relative">
         <img
           src={photoUrl || "https://via.placeholder.com/150"}
           alt="User"
-          className="w-full h-48 object-cover"
+          className="w-full h-56 object-cover"
         />
       </figure>
 
-      <div className="p-6">
-        <h2 className="text-2xl font-bold capitalize text-center">
+      <div className="p-8">
+        <h2 className="text-3xl font-bold capitalize text-center">
           {firstName} {lastName}
         </h2>
 
         {age && gender && (
-          <p className="text-gray-400 text-center mt-2">
+          <p className="text-gray-400 text-center mt-3 text-lg">
             {age} years old, {gender}
           </p>
         )}
-        <p className="text-gray-300 mt-4 text-center">
+        <p className="text-gray-300 mt-5 text-center">
           {about || "No bio provided."}
         </p>
 
-        <div className="flex justify-center gap-4 mt-6">
+        <div className="flex justify-center gap-6 mt-8">
           <button
-            className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md shadow-md transition"
+            className="px-5 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md shadow-md transition"
             onClick={() => handleSendRequest("ignored", _id)}
           >
             Ignore
           </button>
           <button
-            className="px-4 py-2 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-md shadow-md transition"
+            className="px-5 py-3 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-md shadow-md transition"
             onClick={() => handleSendRequest("interested", _id)}
           >
             Interested

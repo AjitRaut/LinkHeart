@@ -1,7 +1,7 @@
 {
-  "name": "devtinder",
+  "name": "linkheart",
   "version": "1.0.0",
-  "description": "tinder for devs",
+  "description": "linkheart For making making new Connections",
   "main": "index.js",
   "scripts": {
     "start": "node src/app.js",

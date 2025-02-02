@@ -9,23 +9,23 @@ const Home = () => {
 
   return (
     <div
-      className="flex flex-col items-center justify-center h-[85vh] bg-cover bg-center  text-black"
-      style={{ 
+      className="flex flex-col items-center justify-center h-screen bg-cover bg-center text-black"
+      style={{
         backgroundImage:
           "url('https://tinder.com/static/build/8ad4e4299ef5e377d2ef00ba5c94c44c.webp')",
       }}
     >
-      <div className="bg-white bg-opacity-10 p-8 rounded-lg text-center max-w-md">
-        <h1 className="text-2xl font-semibold mb-2">
-          Looks like there’s no one new right now!
+      <div className="bg-white bg-opacity-80 backdrop-blur-sm p-8 rounded-3xl shadow-2xl text-center max-w-lg">
+        <h1 className="text-4xl font-extrabold mb-4 text-gray-800">
+          No New Matches Right Now!
         </h1>
-        <p className="text-black mb-8">
-          Check back later to find your perfect match.
+        <p className="text-gray-700 text-lg mb-6">
+          Check back later to discover your perfect match.
         </p>
 
         <button
           onClick={handleClick}
-          className="bg-gradient-to-r from-pink-500 to-red-500 text-white py-2 px-4 rounded-lg hover:scale-105 hover:shadow-lg transition-all"
+          className="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white py-3 px-8 rounded-full font-semibold text-lg hover:scale-110 hover:shadow-2xl transition-all"
         >
           Discover Matches
         </button>
